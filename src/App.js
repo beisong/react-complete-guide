@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
-import Radium from 'radium'
-import style from "radium/es/components/style";
+import Radium, {StyleRoot} from 'radium'
 
 class App extends Component {
   state = {
@@ -93,17 +92,19 @@ class App extends Component {
     }
 
     return (
-      <div className="App">
-        <h1>Hi, I'm a react app</h1>
-        <p className={classes.join(' ')}>This is Really working</p>
-        <button
-          style={buttonStyle}
-          // onClick={this.switchNameHandler.bind(this, 'Max Switch')}
-          onClick={this.togglePersonHandler}>
-          Switch Name
-        </button>
-        {persons}
-      </div>
+      <StyleRoot>
+        <div className="App">
+          <h1>Hi, I'm a react app</h1>
+          <p className={classes.join(' ')}>This is Really working</p>
+          <button
+            style={buttonStyle}
+            // onClick={this.switchNameHandler.bind(this, 'Max Switch')}
+            onClick={this.togglePersonHandler}>
+            Switch Name
+          </button>
+          {persons}
+        </div>
+      </StyleRoot>
     );
   }
 }
