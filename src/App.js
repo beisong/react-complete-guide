@@ -41,29 +41,20 @@ class App extends Component {
   };
 
   render() {
-
-    //INLINE STYLE; Scope to element only
-    const buttonStyle = {
-      backgroundColor : 'green',
-      color:'white',
-      font:'inherit',
-      border:'1px solid blue',
-      padding: '8px',
-      cursor:'pointer'
-    };
-
     let persons = null;
-    if (this.state.showPerson){
-      persons=(
+    let btnClass = '';
+
+    if (this.state.showPerson) {
+      persons = (
         <div>
-          {this.state.persons.map((person,index)=>{
+          {this.state.persons.map((person, index) => {
             return (
               <Person
                 name={person.name}
                 age={person.age}
                 key={person.id}
-                click = {()=> this.deletePersonHandler(index)}
-                changed = {(event)=>this.nameChangeHandler(event, person.id)}
+                click={() => this.deletePersonHandler(index)}
+                changed={(event) => this.nameChangeHandler(event, person.id)}
               />
             )
           })
@@ -71,7 +62,7 @@ class App extends Component {
         </div>
       );
 
-      buttonStyle.backgroundColor='red';
+      btnClass = classes.Red;
     }
 
     let assignedclasses = [];  // join to "red bold"
@@ -86,8 +77,7 @@ class App extends Component {
         <div className={classes.App}>
           <h1>Hi, I'm a react app</h1>
           <p className={assignedclasses.join(' ')}>This is Really working</p>
-          <button
-            style={buttonStyle}
+          <button className={btnClass}
             // onClick={this.switchNameHandler.bind(this, 'Max Switch')}
             onClick={this.togglePersonHandler}>
             Switch Name
@@ -97,5 +87,6 @@ class App extends Component {
     );
   }
 }
+
 
 export default App;
