@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import classes from "./Cockpit.css";
 
 const cockpit = props => {
+  //useEffect called for all render cycle   (for Functional Component)
+  //combined of componentDidMount/ componentDidUpdate
+  useEffect(() => {
+    console.log("[Cockpit.js] useEffect");
+    setTimeout(() => {
+      alert("Saved data to cloud");
+    }, 1000);
+  }, []); //reruns if array changes. if empty arroy, only run once
+
   const assignedclasses = []; // join to "red bold"
 
   let btnClass = "";
