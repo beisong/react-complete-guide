@@ -28,6 +28,15 @@ class App extends Component {
     console.log("[App.js] componentDidMount");
   }
 
+  shouldComponentUpdate(nextProps, nextState, nextContext) {
+    console.log("[App.js] shouldComponentUpdate");
+    return true0;
+  }
+
+  componentDidUpdate() {
+    console.log("[App.js] componentDidUpdate");
+  }
+
   deletePersonHandler = personIndex => {
     const persons = [...this.state.persons]; // equil of slice ; CREATE A COPY
     persons.splice(personIndex, 1);
