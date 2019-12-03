@@ -9,7 +9,17 @@ const cockpit = props => {
     setTimeout(() => {
       alert("Saved data to cloud");
     }, 1000);
-  }, []); //reruns if array changes. if empty arroy, only run once
+    return () => {
+      console.log("[Cockpit.js] cleanup work in useEffect");
+    };
+  }, []); //reruns if array changes. if empty array, only run once
+
+  useEffect(() => {
+    console.log("[Cockpit.js] 2nd useEffect");
+    return () => {
+      console.log("[Cockpit.js] cleanup work in 2nd useEffect");
+    };
+  });
 
   const assignedclasses = []; // join to "red bold"
 
