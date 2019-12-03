@@ -4,6 +4,11 @@ import Persons from "../components/Persons/Persons";
 import Cockpit from "../components/Cockpit/Cockpit";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    console.log("[App.js] constructor");
+  }
+
   state = {
     persons: [
       { id: "1", name: "Max", age: 24 },
@@ -14,8 +19,16 @@ class App extends Component {
     showPerson: false
   };
 
+  static getDerivedStateFromProps(props, state) {
+    console.log("[App.js] getDerivedStateFromProps", props);
+    return state;
+  }
+
+  componentDidMount() {
+    console.log("[App.js] componentDidMount");
+  }
+
   deletePersonHandler = personIndex => {
-    // const persons = this.state.persons.slice();   // Slice create a copy so original state not affected
     const persons = [...this.state.persons]; // equil of slice ; CREATE A COPY
     persons.splice(personIndex, 1);
     this.setState({ persons: persons });
@@ -42,6 +55,7 @@ class App extends Component {
   };
 
   render() {
+    console.log("[App.js] render");
     let persons = null;
 
     if (this.state.showPerson) {
@@ -57,6 +71,7 @@ class App extends Component {
     return (
       <div className={classes.App}>
         <Cockpit
+          title={this.props.appTitle}
           showPerson={this.state.showPersons}
           persons={this.state.persons}
           clicked={this.togglePersonHandler}
