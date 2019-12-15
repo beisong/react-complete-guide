@@ -1,19 +1,19 @@
 // Functional components
 
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import Person from "./Person/Person";
 
-class Persons extends Component {
+class Persons extends PureComponent {
   static getDerivedStateFromProps(props, state) {
     console.log("[Persons.js] getDerivedStateFromProps");
     return state;
   }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    //Will not update if this component is the same
-    return nextProps.persons !== this.props.persons;
-    console.log("[Persons.js] shouldComponentUpdate ");
-  }
+  //
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   //Will not update if this component is the same
+  //   return nextProps.persons !== this.props.persons;
+  //   console.log("[Persons.js] shouldComponentUpdate ");
+  // }
 
   getSnapshotBeforeUpdate(prevProps, prevState) {
     console.log("[Persons.js] getSnapshotBeforeUpdate");
