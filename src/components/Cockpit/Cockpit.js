@@ -45,4 +45,5 @@ const cockpit = props => {
   );
 };
 
-export default cockpit;
+//Rerenders only on input changes
+export default React.memo(cockpit);
