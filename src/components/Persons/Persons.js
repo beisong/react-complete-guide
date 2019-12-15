@@ -10,8 +10,9 @@ class Persons extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
+    //Will not update if this component is the same
+    return nextProps.persons !== this.props.persons;
     console.log("[Persons.js] shouldComponentUpdate ");
-    return true; //Do some comparision to determine if update needed
   }
 
   getSnapshotBeforeUpdate(prevProps, prevState) {
